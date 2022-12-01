@@ -4,7 +4,7 @@
             [clojure.string :as string]
             ["react-native-linear-gradient" :default LinearGradient]
             ["react-native-reanimated" :default reanimated
-             :refer (useSharedValue useAnimatedStyle withTiming withDelay withSpring withRepeat Easing Keyframe)]))
+             :refer (useSharedValue useAnimatedStyle withTiming withDelay withSpring withRepeat Easing Keyframe runOnJS)]))
 
 ;; Animated Components
 (def create-animated-component (comp reagent/adapt-react-class (.-createAnimatedComponent reanimated)))
@@ -25,6 +25,8 @@
 (def with-spring withSpring)
 (def key-frame Keyframe)
 (def with-repeat withRepeat)
+
+(def run-on-js runOnJS)
 
 ;; Easings
 (def bezier (.-bezier ^js Easing))

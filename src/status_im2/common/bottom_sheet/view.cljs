@@ -154,13 +154,21 @@
                                     (do
                                       (reanimated/set-shared-value
                                        bottom-sheet-dy
-                                       (with-animation (+ bg-height-expanded (.-value pan-y))))
-                                      (timer/set-timeout on-expanded animation-delay))
+                                       (with-animation (+ bg-height-expanded (.-value pan-y))
+                                         nil
+                                         (fn []
+                                           (let [f (reanimated/run-on-js on-expanded)] (f)))))
+                                      ;; (timer/set-timeout on-expanded animation-delay)
+                                      )
                                     (do
                                       (reanimated/set-shared-value
                                        bottom-sheet-dy
-                                       (with-animation (+ bg-height (.-value pan-y))))
-                                      (timer/set-timeout on-collapsed animation-delay)))
+                                       (with-animation (+ bg-height (.-value pan-y))
+                                         nil
+                                         (fn []
+                                           (let [f (reanimated/run-on-js on-collapsed)] (f)))))
+                                      ;; (timer/set-timeout on-collapsed animation-delay)
+                                      ))
 
                                   (= @show-bottom-sheet? false)
                                   (reanimated/set-shared-value bottom-sheet-dy (with-animation 0)))))
