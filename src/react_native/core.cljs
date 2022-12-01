@@ -18,6 +18,8 @@
 (def touchable-highlight (reagent/adapt-react-class (.-TouchableHighlight ^js react-native)))
 (def touchable-without-feedback (reagent/adapt-react-class (.-TouchableWithoutFeedback ^js react-native)))
 
+(def keyboard-avoiding-view (reagent/adapt-react-class (.-KeyboardAvoidingView ^js react-native)))
+
 (def flat-list flat-list/flat-list)
 
 (def section-list section-list/section-list)
@@ -55,3 +57,5 @@
   (js->clj (.get (.-Dimensions ^js react-native) "window") :keywordize-keys true))
 
 (def status-bar (.-StatusBar ^js react-native))
+
+(def style-sheet (.-StyleSheet ^js react-native))
